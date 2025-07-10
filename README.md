@@ -1,31 +1,34 @@
 🃏 Jogo de Comparação de Cidades Brasileiras
-📌 Descrição do Programa
-Este programa simula um jogo de cartas com cidades brasileiras.
-Cada carta representa uma cidade com diversos atributos, como:
 
-População
+Este programa simula um jogo de cartas baseado em cidades do Brasil.  
+Cada carta representa uma cidade com diversos atributos, e o jogador escolhe qual atributo será comparado para definir a cidade vencedora.
 
-PIB
+---
 
-Área
+## 📌 Descrição
 
-Densidade Demográfica
+Neste jogo:
 
-Pontos Turísticos
+- O usuário cadastra **duas cidades** (cartas).
+- Cada cidade possui atributos como:
+  - População
+  - Área
+  - PIB
+  - Pontos Turísticos
+  - Densidade Demográfica
+  - PIB per Capita
+- O jogador escolhe um **atributo para comparação**, e o programa determina automaticamente qual cidade vence, com base em regras específicas.
 
-PIB per Capita
+---
 
-🎯 O objetivo é cadastrar duas cartas, escolher um atributo e deixar o programa decidir qual cidade vence com base nesse critério.
+## ⚙️ Como Compilar e Executar
 
-⚙️ Como Compilar e Executar
-Você precisará de um compilador C, como o GCC.
+Você precisará de um compilador C (como o `gcc`).
 
-Para compilar:
-bash
-Copiar
-Editar
+### 🔧 Compilação:
+```bash
 gcc -o jogo_cidades jogo_cidades.c
-Para executar:
+▶️ Execução:
 bash
 Copiar
 Editar
@@ -40,7 +43,8 @@ Opção	Atributo	Tipo	Regra de Vitória
 6	PIB per Capita	Float	Vence a cidade com maior PIB per capita
 
 🧪 Exemplo de Uso
-Cadastro das Cartas:
+Ao rodar o programa, o usuário será solicitado a informar os dados das duas cidades:
+
 text
 Copiar
 Editar
@@ -52,7 +56,8 @@ Informe a População da Cidade: 12300000
 Informe a Área da Cidade (em km²): 1521.11
 Informe o PIB da Cidade (em bilhões de reais): 700
 Informe o Número de Pontos Turísticos: 35
-Menu de Comparação:
+Em seguida, será exibido o menu de comparação:
+
 text
 Copiar
 Editar
@@ -65,14 +70,10 @@ Escolha o atributo para comparar:
 6 - PIB per Capita
 
 Digite sua opção: 5
-O programa exibirá os valores comparados e indicará a cidade vencedora com base no atributo escolhido.
+O programa exibirá os valores comparados e indicará a cidade vencedora com base no critério escolhido.
 
-🧱 Estrutura do Programa
-O funcionamento está dividido em etapas:
-
-Entrada de dados da Carta 1
-
-Entrada de dados da Carta 2
+🧱 Estrutura Interna do Programa
+Entrada de dados da Carta 1 e Carta 2
 
 Cálculo de atributos derivados:
 
@@ -80,18 +81,17 @@ Densidade Demográfica = População / Área
 
 PIB per Capita = PIB / População
 
-Exibição de menu interativo
+Exibição do menu interativo
 
-Comparação usando estruturas switch-case e if-else
+Comparação com estruturas switch-case e if-else
 
-Exibição clara do resultado final
+Exibição do resultado final
 
-✅ Validação e Segurança
-O programa garante que o usuário escolha uma opção válida (entre 1 e 6).
-
-Se for digitado um valor inválido:
+✅ Validações
+O programa valida a opção digitada pelo usuário.
+Caso a entrada seja inválida, uma mensagem é exibida:
 
 text
 Copiar
 Editar
-Opção inválida. Por favor, execute o programa novamente e escolha uma opção entre 1 e 6.
+Opção inválida. Por favor, execute o programa novamente e escolha uma opção entre 1 e 6
