@@ -33,14 +33,31 @@ bash
 Copiar
 Editar
 ./jogo_cidades
+
 📊 Atributos Disponíveis para Comparação
-Opção	Atributo	Tipo	Regra de Vitória
-1	População	Inteiro	Vence a cidade com maior população
-2	Área	Float	Vence a cidade com maior área
-3	PIB	Float	Vence a cidade com maior PIB
-4	Pontos Turísticos	Inteiro	Vence a cidade com mais pontos turísticos
-5	Densidade Demográfica	Float	Vence a cidade com menor densidade demográfica
-6	PIB per Capita	Float	Vence a cidade com maior PIB per capita
+População
+• Tipo: Inteiro
+• Regra de vitória: vence a cidade com maior população
+
+Área
+• Tipo: Float
+• Regra de vitória: vence a cidade com maior área
+
+PIB
+• Tipo: Float
+• Regra de vitória: vence a cidade com maior PIB
+
+Pontos Turísticos
+• Tipo: Inteiro
+• Regra de vitória: vence a cidade com mais pontos turísticos
+
+Densidade Demográfica
+• Tipo: Float
+• Regra de vitória: vence a cidade com menor densidade demográfica
+
+PIB per Capita
+• Tipo: Float
+• Regra de vitória: vence a cidade com maior PIB per capita
 
 🧪 Exemplo de Uso
 Ao rodar o programa, o usuário será solicitado a informar os dados das duas cidades:
