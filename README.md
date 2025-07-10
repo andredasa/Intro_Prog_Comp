@@ -64,10 +64,10 @@ Abra o terminal no diretório do projeto e execute:
 
 bash
 
-gcc -o jogo main.c
+gcc- o jogo main.c
 gcc: chama o compilador.
 
--o jogo: define o nome do executável como jogo.
+o jogo: define o nome do executável como jogo.
 
 main.c: é o arquivo-fonte do programa.
 
