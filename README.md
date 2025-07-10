@@ -39,7 +39,7 @@ Opção	Atributo	Tipo	Regra de Vitória
 2	Área	Float	Vence a cidade com maior área
 3	PIB	Float	Vence a cidade com maior PIB
 4	Pontos Turísticos	Inteiro	Vence a cidade com mais pontos turísticos
-5	Densidade Demográfica	Float	Vence a cidade com menor densidade
+5	Densidade Demográfica	Float	Vence a cidade com menor densidade demográfica
 6	PIB per Capita	Float	Vence a cidade com maior PIB per capita
 
 🧪 Exemplo de Uso
