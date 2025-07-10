@@ -22,25 +22,27 @@ Neste jogo:
 ---
 
 🚀 Como Compilar e Executar um Programa em C
+
 Estas instruções mostram como compilar e executar um programa escrito em C usando o compilador gcc.
 
 🛠️ Pré-requisitos
-Você precisa ter o compilador GCC instalado:
 
-Linux (Ubuntu/Debian)
+Você precisa ter o compilador GCC instalado.
+
+Linux (Ubuntu/Debian):
 
 bash
 
 sudo apt update
 sudo apt install build-essential
 
-macOS (via Homebrew)
+macOS (via Homebrew):
 
 bash
 
 brew install gcc
 
-Windows (via MinGW)
+Windows (via MinGW):
 
 Baixe o MinGW: https://www.mingw-w64.org
 
@@ -77,12 +79,14 @@ gcc -o jogo main.c outro_arquivo.c util.c
 
 ▶️ Executando o Programa
 
-Linux/macOS
+Linux/macOS:
+
 bash
 
 ./jogo
 
-Windows (CMD ou PowerShell)
+Windows (CMD ou PowerShell):
+
 c
 
 jogo.exe
@@ -92,6 +96,7 @@ jogo.exe
 c
 
 // main.c
+
 #include <stdio.h>
 
 int main() {
