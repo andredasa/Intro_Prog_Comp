@@ -1,41 +1,47 @@
-Descrição do Programa
+🃏 Jogo de Comparação de Cidades Brasileiras
+📌 Descrição do Programa
+Este programa simula um jogo de cartas com cidades brasileiras.
+Cada carta representa uma cidade com diversos atributos, como:
 
-O programa simula um jogo de comparação de cartas de cidades brasileiras.
-Cada carta representa uma cidade com vários atributos como população, PIB, área, densidade demográfica, etc.
+População
 
-O usuário cadastra os dados de duas cartas, escolhe qual atributo deseja comparar, e o programa determina qual carta vence com base no valor do atributo escolhido.
+PIB
 
-Como Compilar e Executar
+Área
 
-Você precisará de um compilador C, como gcc.
+Densidade Demográfica
 
-Para compilar no terminal:
+Pontos Turísticos
+
+PIB per Capita
+
+🎯 O objetivo é cadastrar duas cartas, escolher um atributo e deixar o programa decidir qual cidade vence com base nesse critério.
+
+⚙️ Como Compilar e Executar
+Você precisará de um compilador C, como o GCC.
+
+Para compilar:
 bash
 Copiar
 Editar
 gcc -o jogo_cidades jogo_cidades.c
-
-Para executar o programa:
+Para executar:
 bash
 Copiar
 Editar
 ./jogo_cidades
-
-Atributos Disponíveis para Comparação
-Após o cadastro das duas cartas, o usuário deve escolher uma opção no menu interativo:
-
+📊 Atributos Disponíveis para Comparação
 Opção	Atributo	Tipo	Regra de Vitória
-1	População	Inteiro	Vence a cidade com MAIOR população
-2	Área	Float	Vence a cidade com MAIOR área
-3	PIB	Float	Vence a cidade com MAIOR PIB
-4	Pontos Turísticos	Inteiro	Vence a cidade com MAIS pontos turísticos
-5	Densidade Demográfica	Float	Vence a cidade com MENOR densidade
-6	PIB per Capita	Float	Vence a cidade com MAIOR PIB per capita
+1	População	Inteiro	Vence a cidade com maior população
+2	Área	Float	Vence a cidade com maior área
+3	PIB	Float	Vence a cidade com maior PIB
+4	Pontos Turísticos	Inteiro	Vence a cidade com mais pontos turísticos
+5	Densidade Demográfica	Float	Vence a cidade com menor densidade
+6	PIB per Capita	Float	Vence a cidade com maior PIB per capita
 
-Exemplo de Uso
-Ao executar o programa, você verá uma sequência de perguntas como:
-
-java
+🧪 Exemplo de Uso
+Cadastro das Cartas:
+text
 Copiar
 Editar
 Cadastro da Carta 1:
@@ -43,12 +49,11 @@ Informe o Estado (A-H): A
 Informe o Código da Carta (ex: A01): A01
 Informe o Nome da Cidade: São Paulo
 Informe a População da Cidade: 12300000
-Informe a Área da Cidade (em km2): 1521.11
+Informe a Área da Cidade (em km²): 1521.11
 Informe o PIB da Cidade (em bilhões de reais): 700
 Informe o Número de Pontos Turísticos: 35
-Após o cadastro das duas cartas, aparecerá o menu:
-
-sql
+Menu de Comparação:
+text
 Copiar
 Editar
 Escolha o atributo para comparar:
@@ -58,40 +63,35 @@ Escolha o atributo para comparar:
 4 - Pontos Turísticos
 5 - Densidade Demográfica
 6 - PIB per Capita
-Digite sua opção:
-Digite um número entre 1 e 6, por exemplo:
 
-nginx
-Copiar
-Editar
 Digite sua opção: 5
-O programa então exibirá os valores das densidades e dirá qual cidade venceu com base nesse critério (neste caso, a de menor densidade demográfica vence).
+O programa exibirá os valores comparados e indicará a cidade vencedora com base no atributo escolhido.
 
-Estrutura do Programa
-O programa é dividido nas seguintes etapas:
+🧱 Estrutura do Programa
+O funcionamento está dividido em etapas:
 
 Entrada de dados da Carta 1
 
 Entrada de dados da Carta 2
 
-Cálculo de atributos derivados
+Cálculo de atributos derivados:
 
-Densidade demográfica = População / Área
+Densidade Demográfica = População / Área
 
-PIB per capita = PIB / População
+PIB per Capita = PIB / População
 
-Exibição de menu interativo com switch-case
+Exibição de menu interativo
 
-Comparação com if-else aninhado, respeitando regras específicas para cada atributo
+Comparação usando estruturas switch-case e if-else
 
-Exibição clara do resultado
+Exibição clara do resultado final
 
-Validação e Segurança
-O programa verifica se a opção digitada no menu é válida (1 a 6).
+✅ Validação e Segurança
+O programa garante que o usuário escolha uma opção válida (entre 1 e 6).
 
-Caso contrário, exibe mensagem de erro:
+Se for digitado um valor inválido:
 
-lua
+text
 Copiar
 Editar
 Opção inválida. Por favor, execute o programa novamente e escolha uma opção entre 1 e 6.
