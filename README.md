@@ -44,6 +44,7 @@ Baixe o MinGW: https://www.mingw-w64.org
 Instale e adicione o caminho do gcc à variável de ambiente PATH.
 
 📁 Estrutura do Projeto
+
 bash
 Copiar
 Editar
@@ -52,6 +53,7 @@ meu_programa/
 └── README.md
 
 ⚙️ Compilando o Programa
+
 No terminal, no diretório do projeto:
 
 bash
@@ -75,6 +77,7 @@ bash
 gcc -o jogo main.c outro_arquivo.c util.c
 
 ▶️ Executando o Programa
+
 Linux/macOS:
 bash
 
@@ -85,6 +88,7 @@ c
 jogo.exe
 
 📊 Atributos Disponíveis para Comparação
+
 População
 
 Tipo: Inteiro
@@ -122,6 +126,7 @@ Tipo: Float
 Regra de vitória: vence a cidade com maior PIB per capita
 
 🧪 Exemplo de Uso Interativo
+
 Cadastro de Cidades
 
 Cadastro da Carta 1:
@@ -181,6 +186,7 @@ Resultado final:
 São Paulo venceu a rodada!
 
 🧱 Estrutura Interna do Programa
+
 Entrada de dados da Carta 1 e Carta 2
 
 Cálculo dos atributos derivados:
@@ -200,12 +206,14 @@ Tratamento de empate
 Exibição clara e organizada do resultado
 
 ✅ Validações
+
 O programa valida entradas incorretas do usuário.
 Exemplo de tratamento:
 
 Opção inválida. Escolha um atributo diferente do primeiro.
 
 🔧 Makefile (opcional)
+
 makefile
 
 # Makefile
