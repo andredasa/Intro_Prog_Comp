@@ -50,6 +50,7 @@ Editar
 meu_programa/
 ├── main.c
 └── README.md
+
 ⚙️ Compilando o Programa
 No terminal, no diretório do projeto:
 
@@ -72,6 +73,7 @@ Se houver mais arquivos .c:
 bash
 
 gcc -o jogo main.c outro_arquivo.c util.c
+
 ▶️ Executando o Programa
 Linux/macOS:
 bash
@@ -177,6 +179,7 @@ Rio de Janeiro: 6705582.01
 
 Resultado final:
 São Paulo venceu a rodada!
+
 🧱 Estrutura Interna do Programa
 Entrada de dados da Carta 1 e Carta 2
 
@@ -201,6 +204,7 @@ O programa valida entradas incorretas do usuário.
 Exemplo de tratamento:
 
 Opção inválida. Escolha um atributo diferente do primeiro.
+
 🔧 Makefile (opcional)
 makefile
 
