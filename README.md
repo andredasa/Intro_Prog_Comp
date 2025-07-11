@@ -81,14 +81,43 @@ Windows (CMD ou PowerShell):
 c
 
 jogo.exe
+
 📊 Atributos Disponíveis para Comparação
-Atributo	Tipo	Regra de Vitória
-População	Inteiro	Vence a cidade com maior população
-Área	Float	Vence a cidade com maior área
-PIB	Float	Vence a cidade com maior PIB
-Pontos Turísticos	Inteiro	Vence a cidade com mais pontos turísticos
-Densidade Demográfica	Float	Vence a cidade com menor densidade
-PIB per Capita	Float	Vence a cidade com maior PIB per capita
+População
+
+Tipo: Inteiro
+
+Regra de vitória: vence a cidade com maior população
+
+Área
+
+Tipo: Float
+
+Regra de vitória: vence a cidade com maior área
+
+PIB
+
+Tipo: Float
+
+Regra de vitória: vence a cidade com maior PIB
+
+Pontos Turísticos
+
+Tipo: Inteiro
+
+Regra de vitória: vence a cidade com mais pontos turísticos
+
+Densidade Demográfica
+
+Tipo: Float
+
+Regra de vitória: vence a cidade com menor densidade demográfica
+
+PIB per Capita
+
+Tipo: Float
+
+Regra de vitória: vence a cidade com maior PIB per capita
 
 🧪 Exemplo de Uso Interativo
 Cadastro de Cidades
