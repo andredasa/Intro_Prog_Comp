@@ -1,7 +1,7 @@
-🃏 Jogo de Comparação de Cidades Brasileiras
+# 🃏 Jogo de Comparação de Cidades Brasileiras
 
 Este programa simula um jogo de cartas baseado em cidades do Brasil.  
-Cada carta representa uma cidade com diversos atributos e o jogador escolhe qual atributo será comparado para definir a cidade vencedora.
+Cada carta representa uma cidade com diversos atributos, e o jogador escolhe dois atributos para comparar e definir a cidade vencedora.
 
 ---
 
@@ -9,116 +9,174 @@ Cada carta representa uma cidade com diversos atributos e o jogador escolhe qual
 
 Neste jogo:
 
-- O usuário cadastra **duas cidades** (cartas).
-- Cada cidade possui atributos como:
+- O usuário cadastra duas cidades (cartas).
+- Cada cidade possui os seguintes atributos:
   - População
   - Área
   - PIB
   - Pontos Turísticos
   - Densidade Demográfica
   - PIB per Capita
-- O jogador escolhe um **atributo para comparação**, e o programa determina automaticamente qual cidade vence, com base em regras específicas.
+- O jogador escolhe **dois atributos diferentes** para a comparação.
+- O programa determina a cidade vencedora com base nas regras de cada atributo e na **soma total dos dois valores comparados**.
 
 ---
 
-🚀 Como Compilar e Executar um Programa em C
+## 🚀 Como Compilar e Executar
 
-Estas instruções mostram como compilar e executar um programa escrito em C usando o compilador gcc.
-
-🛠️ Pré-requisitos
+### 🛠️ Pré-requisitos
 
 Você precisa ter o compilador GCC instalado.
 
-Linux (Ubuntu/Debian):
+#### Linux (Ubuntu/Debian):
 
-bash
-
+```bash
 sudo apt update
 sudo apt install build-essential
-
 macOS (via Homebrew):
-
 bash
-
+Copiar
+Editar
 brew install gcc
-
 Windows (via MinGW):
-
 Baixe o MinGW: https://www.mingw-w64.org
 
 Instale e adicione o caminho do gcc à variável de ambiente PATH.
 
 📁 Estrutura do Projeto
-
-Exemplo básico:
-
-css
-
+bash
+Copiar
+Editar
 meu_programa/
 ├── main.c
 └── README.md
-
 ⚙️ Compilando o Programa
-
-Abra o terminal no diretório do projeto e execute:
+No terminal, no diretório do projeto:
 
 bash
+Copiar
+Editar
+gcc -Wall -o jogo main.c
+Explicação:
 
-gcc- o jogo main.c
 gcc: chama o compilador.
 
-o jogo: define o nome do executável como jogo.
+-Wall: ativa todos os avisos recomendados.
+
+-o jogo: define o nome do executável como jogo.
 
 main.c: é o arquivo-fonte do programa.
 
-Se você estiver usando múltiplos arquivos .c, compile assim:
+Se houver mais arquivos .c:
 
 bash
 
 gcc -o jogo main.c outro_arquivo.c util.c
-
 ▶️ Executando o Programa
-
 Linux/macOS:
-
 bash
 
 ./jogo
-
 Windows (CMD ou PowerShell):
-
 c
 
 jogo.exe
+📊 Atributos Disponíveis para Comparação
+Atributo	Tipo	Regra de Vitória
+População	Inteiro	Vence a cidade com maior população
+Área	Float	Vence a cidade com maior área
+PIB	Float	Vence a cidade com maior PIB
+Pontos Turísticos	Inteiro	Vence a cidade com mais pontos turísticos
+Densidade Demográfica	Float	Vence a cidade com menor densidade
+PIB per Capita	Float	Vence a cidade com maior PIB per capita
 
-🧪 Exemplo de Código
+🧪 Exemplo de Uso Interativo
+Cadastro de Cidades
 
-c
+Cadastro da Carta 1:
+Informe o Estado (A-H): A
+Informe o Código da Carta (ex: A01): A01
+Informe o Nome da Cidade: São Paulo
+Informe a População da Cidade: 12300000
+Informe a Área da Cidade (em km²): 1521.11
+Informe o PIB da Cidade (em bilhões de reais): 700
+Informe o Número de Pontos Turísticos: 35
 
-// main.c
+Cadastro da Carta 2:
+Informe o Estado (A-H): B
+Informe o Código da Carta (ex: B02): B02
+Informe o Nome da Cidade: Rio de Janeiro
+Informe a População da Cidade: 6700000
+Informe a Área da Cidade (em km²): 1200.50
+Informe o PIB da Cidade (em bilhões de reais): 340
+Informe o Número de Pontos Turísticos: 50
+Menu de Comparação - Escolha do 1º atributo
 
-#include <stdio.h>
+Escolha o PRIMEIRO atributo para comparar:
+1 - População
+2 - Área
+3 - PIB
+4 - Pontos Turísticos
+5 - Densidade Demográfica (MENOR vence)
+6 - PIB per Capita
 
-int main() {
-    printf("Olá, mundo!\n");
-    return 0;
-}
+Digite sua opção: 5
+Menu de Comparação - Escolha do 2º atributo (sem repetir o primeiro)
 
-📝 Dicas
+Escolha o SEGUNDO atributo (diferente do primeiro):
+1 - População
+2 - Área
+3 - PIB
+4 - Pontos Turísticos
+6 - PIB per Capita
 
-Use make para automatizar a compilação (veja abaixo).
+Digite sua opção: 1
+Resultado Final
 
-Compile com -Wall para ver avisos úteis:
+Comparação dos atributos:
+São Paulo:
+ - Densidade Demográfica: 8084.60
+ - População: 12300000.00
 
-bash
+Rio de Janeiro:
+ - Densidade Demográfica: 5582.01
+ - População: 6700000.00
 
-gcc -Wall -o jogo main.c
+Soma dos atributos:
+São Paulo: 12308084.60
+Rio de Janeiro: 6705582.01
 
+Resultado final:
+São Paulo venceu a rodada!
+🧱 Estrutura Interna do Programa
+Entrada de dados da Carta 1 e Carta 2
+
+Cálculo dos atributos derivados:
+
+Densidade Demográfica = População / Área
+
+PIB per Capita = PIB / População
+
+Menus dinâmicos com validação
+
+Comparação com switch-case, if-else e operador ternário
+
+Soma dos dois atributos escolhidos
+
+Tratamento de empate
+
+Exibição clara e organizada do resultado
+
+✅ Validações
+O programa valida entradas incorretas do usuário.
+Exemplo de tratamento:
+
+Opção inválida. Escolha um atributo diferente do primeiro.
 🔧 Makefile (opcional)
-
 makefile
 
 # Makefile
+
 CC = gcc
 CFLAGS = -Wall
 TARGET = jogo
@@ -129,84 +187,8 @@ all:
 
 clean:
 	rm -f $(TARGET)
- 
 Para usar:
-
 bash
 
-make      # Compila o programa
-make clean  # Remove o executável
-
-📊 Atributos Disponíveis para Comparação
-
-População
-• Tipo: Inteiro
-• Regra de vitória: vence a cidade com maior população
-
-Área
-• Tipo: Float
-• Regra de vitória: vence a cidade com maior área
-
-PIB
-• Tipo: Float
-• Regra de vitória: vence a cidade com maior PIB
-
-Pontos Turísticos
-• Tipo: Inteiro
-• Regra de vitória: vence a cidade com mais pontos turísticos
-
-Densidade Demográfica
-• Tipo: Float
-• Regra de vitória: vence a cidade com menor densidade demográfica
-
-PIB per Capita
-• Tipo: Float
-• Regra de vitória: vence a cidade com maior PIB per capita
-
-🧪 Exemplo de Uso
-
-Ao rodar o programa, o usuário será solicitado a informar os dados das duas cidades:
-
-Cadastro da Carta 1:
-Informe o Estado (A-H): A
-Informe o Código da Carta (ex: A01): A01
-Informe o Nome da Cidade: São Paulo
-Informe a População da Cidade: 12300000
-Informe a Área da Cidade (em km²): 1521.11
-Informe o PIB da Cidade (em bilhões de reais): 700
-Informe o Número de Pontos Turísticos: 35
-Em seguida, será exibido o menu de comparação:
-
-Escolha o atributo para comparar:
-1 - População
-2 - Área
-3 - PIB
-4 - Pontos Turísticos
-5 - Densidade Demográfica
-6 - PIB per Capita
-
-Digite sua opção: 5
-O programa exibirá os valores comparados e indicará a cidade vencedora com base no critério escolhido.
-
-🧱 Estrutura Interna do Programa
-
-Entrada de dados da Carta 1 e Carta 2
-
-Cálculo de atributos derivados:
-
-Densidade Demográfica = População / Área
-
-PIB per Capita = PIB / População
-
-Exibição do menu interativo
-
-Comparação com estruturas switch-case e if-else
-
-Exibição do resultado final
-
-✅ Validações
-
-O programa valida a opção digitada pelo usuário.
-Caso a entrada seja inválida, uma mensagem é exibida:
-
-Opção inválida. Por favor, execute o programa novamente e escolha uma opção entre 1 e 6
+make       # Compila o programa
+make clean # Remove o executável
