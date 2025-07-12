@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <string.h>
 
-// Função para exibir o menu e retornar o nome do atributo
+// Função para exibir o nome do atributo
 const char* getNomeAtributo(int opcao) {
     switch (opcao) {
         case 1: return "População";
@@ -27,20 +27,46 @@ float getValorAtributo(int opcao, unsigned long int pop, float area, float pib, 
     }
 }
 
+// Função para exibir os atributos disponíveis (sem for)
+void exibirAtributosDisponiveis(int excluido) {
+    if (excluido != 1) printf("1 - População\n");
+    if (excluido != 2) printf("2 - Área\n");
+    if (excluido != 3) printf("3 - PIB\n");
+    if (excluido != 4) printf("4 - Pontos Turísticos\n");
+    if (excluido != 5) printf("5 - Densidade Demográfica\n");
+    if (excluido != 6) printf("6 - PIB per Capita\n");
+}
+
+// Função para selecionar segundo atributo com recursão no lugar de laço
+int escolherSegundoAtributo(int primeiro) {
+    int segundo;
+    printf("\nEscolha o SEGUNDO atributo (diferente do primeiro):\n");
+    exibirAtributosDisponiveis(primeiro);
+    printf("Digite sua opção: ");
+    scanf("%d", &segundo);
+
+    if (segundo != primeiro && segundo >= 1 && segundo <= 6) {
+        return segundo;
+    } else {
+        printf("Opção inválida. Escolha novamente.\n");
+        return escolherSegundoAtributo(primeiro);
+    }
+}
+
 int main() {
-    // Declaração das variáveis da Carta 1
+    // Carta 1
     char estado1, codigo1[4], nomeCidade1[50];
     unsigned long int populacao1;
-    float area1, pib1, densidade1, pibPerCapita1, superPoder1;
+    float area1, pib1, densidade1, pibPerCapita1;
     int pontosTuristicos1;
 
-    // Declaração das variáveis da Carta 2
+    // Carta 2
     char estado2, codigo2[4], nomeCidade2[50];
     unsigned long int populacao2;
-    float area2, pib2, densidade2, pibPerCapita2, superPoder2;
+    float area2, pib2, densidade2, pibPerCapita2;
     int pontosTuristicos2;
 
-    // Entrada dos dados da carta 1
+    // Entrada carta 1
     printf("Cadastro da Carta 1:\n");
     printf("Informe o Estado (A-H): ");
     scanf(" %c", &estado1);
@@ -57,12 +83,10 @@ int main() {
     printf("Informe o Número de Pontos Turísticos: ");
     scanf("%d", &pontosTuristicos1);
 
-    // Cálculos
     densidade1 = populacao1 / area1;
     pibPerCapita1 = (pib1 * 1000000000) / populacao1;
-    superPoder1 = (float)populacao1 + area1 + pib1 + pontosTuristicos1 + pibPerCapita1 + (1 / densidade1);
 
-    // Entrada dos dados da carta 2
+    // Entrada carta 2
     printf("\nCadastro da Carta 2:\n");
     printf("Informe o Estado (A-H): ");
     scanf(" %c", &estado2);
@@ -79,14 +103,12 @@ int main() {
     printf("Informe o Número de Pontos Turísticos: ");
     scanf("%d", &pontosTuristicos2);
 
-    // Cálculos
     densidade2 = populacao2 / area2;
     pibPerCapita2 = (pib2 * 1000000000) / populacao2;
-    superPoder2 = (float)populacao2 + area2 + pib2 + pontosTuristicos2 + pibPerCapita2 + (1 / densidade2);
 
     int atributo1, atributo2;
 
-    // Menu para o primeiro atributo
+    // Seleção de atributos
     printf("\nEscolha o PRIMEIRO atributo para comparar:\n");
     printf("1 - População\n");
     printf("2 - Área\n");
@@ -97,29 +119,14 @@ int main() {
     printf("Digite sua opção: ");
     scanf("%d", &atributo1);
 
-    // Menu para o segundo atributo com exclusão do primeiro
-    do {
-        printf("\nEscolha o SEGUNDO atributo (diferente do primeiro):\n");
-        for (int i = 1; i <= 6; i++) {
-            if (i != atributo1) {
-                printf("%d - %s\n", i, getNomeAtributo(i));
-            }
-        }
-        printf("Digite sua opção: ");
-        scanf("%d", &atributo2);
+    atributo2 = escolherSegundoAtributo(atributo1);
 
-        if (atributo2 == atributo1 || atributo2 < 1 || atributo2 > 6)
-            printf("Opção inválida. Escolha um atributo diferente do primeiro.\n");
-
-    } while (atributo2 == atributo1 || atributo2 < 1 || atributo2 > 6);
-
-    // Obtenção dos valores dos atributos
     float valor1_c1 = getValorAtributo(atributo1, populacao1, area1, pib1, pontosTuristicos1, densidade1, pibPerCapita1);
     float valor2_c1 = getValorAtributo(atributo2, populacao1, area1, pib1, pontosTuristicos1, densidade1, pibPerCapita1);
     float valor1_c2 = getValorAtributo(atributo1, populacao2, area2, pib2, pontosTuristicos2, densidade2, pibPerCapita2);
     float valor2_c2 = getValorAtributo(atributo2, populacao2, area2, pib2, pontosTuristicos2, densidade2, pibPerCapita2);
 
-    // Exibição clara dos dados
+    // Exibição
     printf("\nComparação dos atributos:\n");
     printf("%s:\n", nomeCidade1);
     printf(" - %s: %.2f\n", getNomeAtributo(atributo1), valor1_c1);
@@ -129,20 +136,28 @@ int main() {
     printf(" - %s: %.2f\n", getNomeAtributo(atributo1), valor1_c2);
     printf(" - %s: %.2f\n", getNomeAtributo(atributo2), valor2_c2);
 
-    // Ajuste da comparação considerando a Densidade como menor é melhor
+    // Pontuação
     float pontos_c1 = 0, pontos_c2 = 0;
 
-    pontos_c1 += (atributo1 == 5) ? (valor1_c1 < valor1_c2 ? 1 : (valor1_c1 > valor1_c2 ? 0 : 0.5)) :
-                 (valor1_c1 > valor1_c2 ? 1 : (valor1_c1 < valor1_c2 ? 0 : 0.5));
+    if (atributo1 == 5) {
+        if (valor1_c1 < valor1_c2) pontos_c1++;
+        else if (valor1_c1 > valor1_c2) pontos_c2++;
+        else { pontos_c1 += 0.5; pontos_c2 += 0.5; }
+    } else {
+        if (valor1_c1 > valor1_c2) pontos_c1++;
+        else if (valor1_c1 < valor1_c2) pontos_c2++;
+        else { pontos_c1 += 0.5; pontos_c2 += 0.5; }
+    }
 
-    pontos_c2 += (atributo1 == 5) ? (valor1_c2 < valor1_c1 ? 1 : (valor1_c2 > valor1_c1 ? 0 : 0.5)) :
-                 (valor1_c2 > valor1_c1 ? 1 : (valor1_c2 < valor1_c1 ? 0 : 0.5));
-
-    pontos_c1 += (atributo2 == 5) ? (valor2_c1 < valor2_c2 ? 1 : (valor2_c1 > valor2_c2 ? 0 : 0.5)) :
-                 (valor2_c1 > valor2_c2 ? 1 : (valor2_c1 < valor2_c2 ? 0 : 0.5));
-
-    pontos_c2 += (atributo2 == 5) ? (valor2_c2 < valor2_c1 ? 1 : (valor2_c2 > valor2_c1 ? 0 : 0.5)) :
-                 (valor2_c2 > valor2_c1 ? 1 : (valor2_c2 < valor2_c1 ? 0 : 0.5));
+    if (atributo2 == 5) {
+        if (valor2_c1 < valor2_c2) pontos_c1++;
+        else if (valor2_c1 > valor2_c2) pontos_c2++;
+        else { pontos_c1 += 0.5; pontos_c2 += 0.5; }
+    } else {
+        if (valor2_c1 > valor2_c2) pontos_c1++;
+        else if (valor2_c1 < valor2_c2) pontos_c2++;
+        else { pontos_c1 += 0.5; pontos_c2 += 0.5; }
+    }
 
     float soma1 = valor1_c1 + valor2_c1;
     float soma2 = valor1_c2 + valor2_c2;
