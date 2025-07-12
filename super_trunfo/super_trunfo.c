@@ -27,7 +27,7 @@ float getValorAtributo(int opcao, unsigned long int pop, float area, float pib, 
     }
 }
 
-// Função para exibir os atributos disponíveis (sem for)
+// Função para exibir os atributos disponíveis
 void exibirAtributosDisponiveis(int excluido) {
     if (excluido != 1) printf("1 - População\n");
     if (excluido != 2) printf("2 - Área\n");
