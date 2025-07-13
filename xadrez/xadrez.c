@@ -2,11 +2,12 @@
 
 /*
     Programa: Simulação de movimentos de peças de xadrez.
-    Peças simuladas: Torre, Bispo e Rainha.
+    Peças simuladas: Torre, Bispo, Rainha e Cavalo.
     Cada peça utiliza uma estrutura de repetição diferente:
     - Torre: estrutura for
     - Bispo: estrutura while
     - Rainha: estrutura do-while
+    - Cavalo: combinação de for e while (movimento em "L")
 
     O programa exibe no console os movimentos realizados por cada peça.
 */
@@ -16,52 +17,74 @@ int main() {
     // MOVIMENTO DA TORRE (for)
     // ==========================
 
-    // A Torre se movimenta em linha reta (horizontal ou vertical).
-    // Neste caso, simulamos a torre movendo-se 5 casas para a direita.
-    // A estrutura 'for' é usada por ser ideal para repetições com contador definido.
-
     printf("Movimento da Torre:\n");
 
     // Loop que imprime "Direita" 5 vezes, simulando o movimento da Torre
     for (int i = 1; i <= 5; i++) {
-        printf("Direita\n"); // Direção do movimento da Torre
+        printf("Direita\n");
     }
 
     // ==========================
     // MOVIMENTO DO BISPO (while)
     // ==========================
 
-    // O Bispo move-se sempre na diagonal (combinação de duas direções).
-    // Aqui, simulamos o Bispo movendo-se 5 casas na diagonal para cima e à direita.
-    // A estrutura 'while' é usada para mostrar um controle baseado em condição.
-
     printf("\nMovimento do Bispo:\n");
 
-    int casasBispo = 1; // Contador de casas percorridas pelo Bispo
+    int casasBispo = 1;
 
-    // Enquanto o Bispo não tiver se movido 5 casas, continua o movimento
     while (casasBispo <= 5) {
-        printf("Cima Direita\n"); // Direção do movimento do Bispo (diagonal)
-        casasBispo++; // Avança para a próxima casa
+        printf("Cima Direita\n");
+        casasBispo++;
     }
 
     // ==========================
     // MOVIMENTO DA RAINHA (do-while)
     // ==========================
 
-    // A Rainha pode mover-se em todas as direções (combina Torre e Bispo).
-    // Aqui, simulamos a Rainha movendo-se 8 casas para a esquerda.
-    // A estrutura 'do-while' é usada para garantir que o corpo do loop seja executado pelo menos uma vez.
-
     printf("\nMovimento da Rainha:\n");
 
-    int casasRainha = 1; // Contador de casas percorridas pela Rainha
+    int casasRainha = 1;
 
-    // Executa o movimento da Rainha ao menos uma vez, e continua até 8 casas
     do {
-        printf("Esquerda\n"); // Direção do movimento da Rainha
-        casasRainha++; // Avança para a próxima casa
+        printf("Esquerda\n");
+        casasRainha++;
     } while (casasRainha <= 8);
 
-    return 0; // Fim do programa
+    // ==========================
+    // MOVIMENTO DO CAVALO (for + while)
+    // ==========================
+
+    /*
+        O Cavalo se move em "L", neste caso:
+        - Duas casas para baixo
+        - Uma casa para a esquerda
+
+        Implementação usando:
+        - Loop 'for' para as duas casas para baixo
+        - Loop 'while' para a casa para a esquerda
+
+        Saídas esperadas:
+        Baixo
+        Baixo
+        Esquerda
+    */
+
+    printf("\nMovimento do Cavalo:\n");
+
+    int movimentosBaixo = 2;     // Número de casas para baixo
+    int movimentosEsquerda = 1;  // Número de casas para a esquerda
+
+    // Movimento "duas casas para baixo" usando 'for'
+    for (int i = 1; i <= movimentosBaixo; i++) {
+        printf("Baixo\n");
+    }
+
+    // Movimento "uma casa para a esquerda" usando 'while'
+    int contadorEsquerda = 0;
+    while (contadorEsquerda < movimentosEsquerda) {
+        printf("Esquerda\n");
+        contadorEsquerda++;
+    }
+
+    return 0;
 }
