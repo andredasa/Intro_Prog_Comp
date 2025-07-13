@@ -2,85 +2,88 @@
 
 /*
     Programa: Simulação de movimentos de peças de xadrez.
-    Peças simuladas: Torre, Bispo, Rainha e Cavalo.
-    Cada peça utiliza uma estrutura de repetição diferente:
-    - Torre: estrutura for
-    - Bispo: estrutura while
-    - Rainha: estrutura do-while
-    - Cavalo: combinação de for e while (movimento em "L")
+    Peças: Torre, Rainha, Bispo e Cavalo.
 
-    O programa exibe no console os movimentos realizados por cada peça.
+    Regras de implementação:
+    - Torre: Recursiva simples (movimento para Direita)
+    - Rainha: Recursiva simples (movimento para Esquerda)
+    - Bispo: Recursiva dupla (vertical e horizontal)
+    - Cavalo: Loop complexo com 3 movimentos fixos: Cima, Cima, Direita
 */
 
-int main() {
-    // ==========================
-    // MOVIMENTO DA TORRE (for)
-    // ==========================
+// ==========================
+// TORRE – Recursiva simples
+// ==========================
+void moverTorre(int casas) {
+    if (casas == 0)
+        return;
 
-    printf("Movimento da Torre:\n");
+    printf("Direita\n");
+    moverTorre(casas - 1);
+}
 
-    // Loop que imprime "Direita" 5 vezes, simulando o movimento da Torre
-    for (int i = 1; i <= 5; i++) {
-        printf("Direita\n");
-    }
+// ==========================
+// RAINHA – Recursiva simples
+// ==========================
+void moverRainha(int casas) {
+    if (casas == 0)
+        return;
 
-    // ==========================
-    // MOVIMENTO DO BISPO (while)
-    // ==========================
+    printf("Esquerda\n");
+    moverRainha(casas - 1);
+}
 
-    printf("\nMovimento do Bispo:\n");
+// ==========================
+// BISPO – Recursiva dupla
+// ==========================
+void moverHorizontal(int colunaAtual, int totalColunas) {
+    if (colunaAtual >= totalColunas)
+        return;
 
-    int casasBispo = 1;
+    printf("Cima Direita\n");
+    moverHorizontal(colunaAtual + 1, totalColunas);
+}
 
-    while (casasBispo <= 5) {
-        printf("Cima Direita\n");
-        casasBispo++;
-    }
+void moverBispo(int linhaAtual, int totalLinhas, int totalColunas) {
+    if (linhaAtual >= totalLinhas)
+        return;
 
-    // ==========================
-    // MOVIMENTO DA RAINHA (do-while)
-    // ==========================
+    moverHorizontal(0, totalColunas); // Loop interno por recursão
+    moverBispo(linhaAtual + 1, totalLinhas, totalColunas); // Loop externo recursivo
+}
 
-    printf("\nMovimento da Rainha:\n");
-
-    int casasRainha = 1;
-
-    do {
-        printf("Esquerda\n");
-        casasRainha++;
-    } while (casasRainha <= 8);
-
-    // ==========================
-    // MOVIMENTO DO CAVALO (for + while aninhado, sem if)
-    // ==========================
-
-    /*
-        O Cavalo se move em "L", neste caso:
-        - Duas casas para baixo
-        - Uma casa para a esquerda
-
-        Implementação usando:
-        - Loop 'for' para as duas casas para baixo
-        - Loop 'while' aninhado para a casa para a esquerda
-    */
-
-    printf("\nMovimento do Cavalo:\n");
-
-    int movimentosBaixo = 2;
-    int movimentosEsquerda = 1;
-
-    // Primeiro loop: for
-    for (int i = 1; i <= movimentosBaixo; i++) {
-        printf("Baixo\n");
-
-        // Executa o while apenas na última iteração,
-        // controlando via condição no próprio while
-        int contadorEsquerda = 0;
-        while (i == movimentosBaixo && contadorEsquerda < movimentosEsquerda) {
-            printf("Esquerda\n");
-            contadorEsquerda++;
+// ==========================
+// CAVALO – Loop com 3 movimentos fixos
+// ==========================
+void moverCavalo() {
+    for (int passo = 0; passo < 3; passo++) {
+        if (passo < 2) {
+            printf("Cima\n");
+        } else {
+            printf("Direita\n");
         }
     }
+}
+
+// ==========================
+// FUNÇÃO PRINCIPAL
+// ==========================
+int main() {
+    // Torre
+    printf("Movimento da Torre:\n");
+    moverTorre(5);  // 5 movimentos para Direita
+
+    // Bispo
+    printf("\nMovimento do Bispo:\n");
+    moverBispo(0, 3, 2);  // 3 linhas, 2 colunas por linha
+
+    // Rainha
+    printf("\nMovimento da Rainha:\n");
+    moverRainha(8);  // 8 movimentos para Esquerda
+
+    // Cavalo
+    printf("\nMovimento do Cavalo:\n");
+    moverCavalo();  // Cima, Cima, Direita
 
     return 0;
 }
