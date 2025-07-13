@@ -51,7 +51,7 @@ int main() {
     } while (casasRainha <= 8);
 
     // ==========================
-    // MOVIMENTO DO CAVALO (for + while)
+    // MOVIMENTO DO CAVALO (for + while aninhado, sem if)
     // ==========================
 
     /*
@@ -61,32 +61,26 @@ int main() {
 
         Implementação usando:
         - Loop 'for' para as duas casas para baixo
-        - Loop 'while' para a casa para a esquerda
-
-        Saídas esperadas:
-        Baixo
-        Baixo
-        Esquerda
+        - Loop 'while' aninhado para a casa para a esquerda
     */
 
     printf("\nMovimento do Cavalo:\n");
 
-    int movimentosBaixo = 2;     // Número de casas para baixo
-    int movimentosEsquerda = 1;  // Número de casas para a esquerda
+    int movimentosBaixo = 2;
+    int movimentosEsquerda = 1;
 
-    // Movimento "duas casas para baixo" usando 'for' com 'while' aninhado na última iteração
-for (int i = 1; i <= movimentosBaixo; i++) {
-    printf("Baixo\n");
+    // Primeiro loop: for
+    for (int i = 1; i <= movimentosBaixo; i++) {
+        printf("Baixo\n");
 
-    // Executa o while somente após o último "Baixo"
-    if (i == movimentosBaixo) {
+        // Executa o while apenas na última iteração,
+        // controlando via condição no próprio while
         int contadorEsquerda = 0;
-        while (contadorEsquerda < movimentosEsquerda) {
+        while (i == movimentosBaixo && contadorEsquerda < movimentosEsquerda) {
             printf("Esquerda\n");
             contadorEsquerda++;
         }
     }
-}
-    
+
     return 0;
 }
