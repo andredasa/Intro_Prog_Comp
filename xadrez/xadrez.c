@@ -74,17 +74,19 @@ int main() {
     int movimentosBaixo = 2;     // Número de casas para baixo
     int movimentosEsquerda = 1;  // Número de casas para a esquerda
 
-    // Movimento "duas casas para baixo" usando 'for'
-    for (int i = 1; i <= movimentosBaixo; i++) {
-        printf("Baixo\n");
-    }
+    // Movimento "duas casas para baixo" usando 'for' com 'while' aninhado na última iteração
+for (int i = 1; i <= movimentosBaixo; i++) {
+    printf("Baixo\n");
 
-    // Movimento "uma casa para a esquerda" usando 'while'
-    int contadorEsquerda = 0;
-    while (contadorEsquerda < movimentosEsquerda) {
-        printf("Esquerda\n");
-        contadorEsquerda++;
+    // Executa o while somente após o último "Baixo"
+    if (i == movimentosBaixo) {
+        int contadorEsquerda = 0;
+        while (contadorEsquerda < movimentosEsquerda) {
+            printf("Esquerda\n");
+            contadorEsquerda++;
+        }
     }
-
+}
+    
     return 0;
 }
