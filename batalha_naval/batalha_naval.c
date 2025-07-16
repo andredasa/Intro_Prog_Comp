@@ -1,13 +1,8 @@
 #include <stdio.h>
 
-// Tamanho do tabuleiro
-#define TAMANHO 10
-
-// Valor representando uma célula com navio
-#define NAVIO 3
-
-// Tamanho fixo dos navios
-#define TAMANHO_NAVIO 3
+#define TAMANHO 10         // Tamanho do tabuleiro (10x10)
+#define NAVIO 3            // Valor representando uma parte do navio
+#define TAMANHO_NAVIO 3    // Tamanho fixo dos navios
 
 // Função para imprimir o tabuleiro
 void imprimirTabuleiro(int tabuleiro[TAMANHO][TAMANHO]) {
@@ -15,7 +10,7 @@ void imprimirTabuleiro(int tabuleiro[TAMANHO][TAMANHO]) {
 
     for (int i = 0; i < TAMANHO; i++) {
         for (int j = 0; j < TAMANHO; j++) {
-            printf("%d ", tabuleiro[i][j]); // Imprime cada célula com um espaço
+            printf("%d ", tabuleiro[i][j]);
         }
         printf("\n");
     }
@@ -23,66 +18,103 @@ void imprimirTabuleiro(int tabuleiro[TAMANHO][TAMANHO]) {
     printf("\n");
 }
 
+// Verifica se há sobreposição nas coordenadas
+int verificaSobreposicao(int tabuleiro[TAMANHO][TAMANHO], int coordenadas[3][2]) {
+    for (int i = 0; i < TAMANHO_NAVIO; i++) {
+        int linha = coordenadas[i][0];
+        int coluna = coordenadas[i][1];
+        if (tabuleiro[linha][coluna] != 0) {
+            return 1; // Há sobreposição
+        }
+    }
+    return 0; // Livre
+}
+
+// Posiciona um navio no tabuleiro nas coordenadas fornecidas
+void posicionarNavio(int tabuleiro[TAMANHO][TAMANHO], int coordenadas[3][2]) {
+    for (int i = 0; i < TAMANHO_NAVIO; i++) {
+        int linha = coordenadas[i][0];
+        int coluna = coordenadas[i][1];
+        tabuleiro[linha][coluna] = NAVIO;
+    }
+}
+
 int main() {
-    // Declaração e inicialização do tabuleiro com 0 (água)
     int tabuleiro[TAMANHO][TAMANHO] = {0};
 
-    // Declaração dos vetores representando os navios (todos os valores são 3)
-    int navioHorizontal[TAMANHO_NAVIO] = {NAVIO, NAVIO, NAVIO};
-    int navioVertical[TAMANHO_NAVIO] = {NAVIO, NAVIO, NAVIO};
+    // ===================== //
+    // NAVIO 1 - Horizontal  //
+    // Linha ajustada de 2 -> 4
+    // ===================== //
+    int linhaH = 4;
+    int colunaH = 4;
+    int navioH[3][2] = {
+        {linhaH, colunaH},
+        {linhaH, colunaH + 1},
+        {linhaH, colunaH + 2}
+    };
 
-    // Coordenadas iniciais definidas no código
-    int linhaInicialHorizontal = 2;
-    int colunaInicialHorizontal = 4;
-
-    int linhaInicialVertical = 5;
-    int colunaInicialVertical = 7;
-
-    // Verificação se o navio horizontal cabe no tabuleiro
-    if (colunaInicialHorizontal + TAMANHO_NAVIO <= TAMANHO) {
-        // Verificação se as posições estão livres (sem outro navio)
-        int sobreposicao = 0;
-        for (int i = 0; i < TAMANHO_NAVIO; i++) {
-            if (tabuleiro[linhaInicialHorizontal][colunaInicialHorizontal + i] != 0) {
-                sobreposicao = 1;
-                break;
-            }
-        }
-
-        // Se não houver sobreposição, posiciona o navio
-        if (!sobreposicao) {
-            for (int i = 0; i < TAMANHO_NAVIO; i++) {
-                tabuleiro[linhaInicialHorizontal][colunaInicialHorizontal + i] = navioHorizontal[i];
-            }
-        } else {
-            printf("Erro: Sobreposição detectada no navio horizontal.\n");
-        }
+    if (colunaH + TAMANHO_NAVIO <= TAMANHO && !verificaSobreposicao(tabuleiro, navioH)) {
+        posicionarNavio(tabuleiro, navioH);
     } else {
-        printf("Erro: Navio horizontal ultrapassa os limites do tabuleiro.\n");
+        printf("Erro: Navio horizontal fora dos limites ou sobreposto.\n");
     }
 
-    // Verificação se o navio vertical cabe no tabuleiro
-    if (linhaInicialVertical + TAMANHO_NAVIO <= TAMANHO) {
-        int sobreposicao = 0;
-        for (int i = 0; i < TAMANHO_NAVIO; i++) {
-            if (tabuleiro[linhaInicialVertical + i][colunaInicialVertical] != 0) {
-                sobreposicao = 1;
-                break;
-            }
-        }
+    // =================== //
+    // NAVIO 2 - Vertical  //
+    // Linha ajustada de 5 -> 6
+    // =================== //
+    int linhaV = 6;
+    int colunaV = 7;
+    int navioV[3][2] = {
+        {linhaV, colunaV},
+        {linhaV + 1, colunaV},
+        {linhaV + 2, colunaV}
+    };
 
-        if (!sobreposicao) {
-            for (int i = 0; i < TAMANHO_NAVIO; i++) {
-                tabuleiro[linhaInicialVertical + i][colunaInicialVertical] = navioVertical[i];
-            }
-        } else {
-            printf("Erro: Sobreposição detectada no navio vertical.\n");
-        }
+    if (linhaV + TAMANHO_NAVIO <= TAMANHO && !verificaSobreposicao(tabuleiro, navioV)) {
+        posicionarNavio(tabuleiro, navioV);
     } else {
-        printf("Erro: Navio vertical ultrapassa os limites do tabuleiro.\n");
+        printf("Erro: Navio vertical fora dos limites ou sobreposto.\n");
     }
 
-    // Exibe o tabuleiro final com os navios posicionados
+    // ============================ //
+    // NAVIO 3 - Diagonal Principal //
+    // ============================ //
+    int linhaD1 = 0;
+    int colunaD1 = 0;
+    int navioD1[3][2] = {
+        {linhaD1, colunaD1},
+        {linhaD1 + 1, colunaD1 + 1},
+        {linhaD1 + 2, colunaD1 + 2}
+    };
+
+    if (linhaD1 + TAMANHO_NAVIO <= TAMANHO && colunaD1 + TAMANHO_NAVIO <= TAMANHO &&
+        !verificaSobreposicao(tabuleiro, navioD1)) {
+        posicionarNavio(tabuleiro, navioD1);
+    } else {
+        printf("Erro: Navio diagonal principal fora dos limites ou sobreposto.\n");
+    }
+
+    // =================================== //
+    // NAVIO 4 - Diagonal Secundária (↘) //
+    // =================================== //
+    int linhaD2 = 0;
+    int colunaD2 = 9;
+    int navioD2[3][2] = {
+        {linhaD2, colunaD2},
+        {linhaD2 + 1, colunaD2 - 1},
+        {linhaD2 + 2, colunaD2 - 2}
+    };
+
+    if (linhaD2 + TAMANHO_NAVIO <= TAMANHO && colunaD2 - (TAMANHO_NAVIO - 1) >= 0 &&
+        !verificaSobreposicao(tabuleiro, navioD2)) {
+        posicionarNavio(tabuleiro, navioD2);
+    } else {
+        printf("Erro: Navio diagonal secundária fora dos limites ou sobreposto.\n");
+    }
+
+    // Exibir o tabuleiro final
     imprimirTabuleiro(tabuleiro);
 
     return 0;
