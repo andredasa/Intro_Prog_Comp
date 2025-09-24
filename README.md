@@ -279,4 +279,5 @@ Para usar:
 bash:
 
 make       # Compila o programa
+
 make clean # Remove o executável
