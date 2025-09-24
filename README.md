@@ -30,24 +30,24 @@ Você precisa ter o compilador GCC instalado.
 
 #### Linux (Ubuntu/Debian):
 
-```bash
+bash:
 sudo apt update
 sudo apt install build-essential
+
 macOS (via Homebrew):
-bash
-Copiar
-Editar
+
+bash:
 brew install gcc
+
 Windows (via MinGW):
+
 Baixe o MinGW: https://www.mingw-w64.org
 
 Instale e adicione o caminho do gcc à variável de ambiente PATH.
 
 📁 Estrutura do Projeto
 
-bash
-Copiar
-Editar
+bash:
 meu_programa/
 ├── main.c
 └── README.md
@@ -56,10 +56,9 @@ meu_programa/
 
 No terminal, no diretório do projeto:
 
-bash
-Copiar
-Editar
+bash:
 gcc -Wall -o jogo main.c
+
 Explicação:
 
 gcc: chama o compilador.
@@ -72,15 +71,15 @@ main.c: é o arquivo-fonte do programa.
 
 Se houver mais arquivos .c:
 
-bash
+bash:
 
 gcc -o jogo main.c outro_arquivo.c util.c
 
 ▶️ Executando o Programa
 
 Linux/macOS:
-bash
 
+bash:
 ./jogo
 Windows (CMD ou PowerShell):
 c
@@ -229,7 +228,7 @@ all:
 clean:
 	rm -f $(TARGET)
 Para usar:
-bash
 
+bash:
 make       # Compila o programa
 make clean # Remove o executável
