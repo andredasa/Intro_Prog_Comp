@@ -136,22 +136,37 @@ Regra de vitória: vence a cidade com maior PIB per capita
 Cadastro de Cidades
 
 Cadastro da Carta 1:
+
 Informe o Estado (A-H): A
+
 Informe o Código da Carta (ex: A01): A01
+
 Informe o Nome da Cidade: São Paulo
+
 Informe a População da Cidade: 12300000
+
 Informe a Área da Cidade (em km²): 1521.11
+
 Informe o PIB da Cidade (em bilhões de reais): 700
+
 Informe o Número de Pontos Turísticos: 35
 
 Cadastro da Carta 2:
+
 Informe o Estado (A-H): B
+
 Informe o Código da Carta (ex: B02): B02
+
 Informe o Nome da Cidade: Rio de Janeiro
+
 Informe a População da Cidade: 6700000
+
 Informe a Área da Cidade (em km²): 1200.50
+
 Informe o PIB da Cidade (em bilhões de reais): 340
+
 Informe o Número de Pontos Turísticos: 50
+
 Menu de Comparação - Escolha do 1º atributo
 
 Escolha o PRIMEIRO atributo para comparar:
