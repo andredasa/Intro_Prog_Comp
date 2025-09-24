@@ -170,37 +170,57 @@ Informe o Número de Pontos Turísticos: 50
 Menu de Comparação - Escolha do 1º atributo
 
 Escolha o PRIMEIRO atributo para comparar:
+
 1 - População
+
 2 - Área
+
 3 - PIB
+
 4 - Pontos Turísticos
+
 5 - Densidade Demográfica (MENOR vence)
+
 6 - PIB per Capita
 
 Digite sua opção: 5
+
 Menu de Comparação - Escolha do 2º atributo (sem repetir o primeiro)
 
 Escolha o SEGUNDO atributo (diferente do primeiro):
+
 1 - População
+
 2 - Área
+
 3 - PIB
+
 4 - Pontos Turísticos
+
 6 - PIB per Capita
 
 Digite sua opção: 1
+
 Resultado Final
 
 Comparação dos atributos:
+
 São Paulo:
+
  - Densidade Demográfica: 8084.60
+   
  - População: 12300000.00
 
 Rio de Janeiro:
+
  - Densidade Demográfica: 5582.01
+
  - População: 6700000.00
 
 Soma dos atributos:
+
 São Paulo: 12308084.60
+
 Rio de Janeiro: 6705582.01
 
 Resultado final:
@@ -229,6 +249,7 @@ Exibição clara e organizada do resultado
 ✅ Validações
 
 O programa valida entradas incorretas do usuário.
+
 Exemplo de tratamento:
 
 Opção inválida. Escolha um atributo diferente do primeiro.
@@ -240,8 +261,11 @@ makefile
 # Makefile
 
 CC = gcc
+
 CFLAGS = -Wall
+
 TARGET = jogo
+
 SRCS = main.c
 
 all:
